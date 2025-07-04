@@ -25,7 +25,7 @@ public class ProjectController {
                 "Resemblance.project",
                 "Project File",
                 "C:\\Users\\SinglaKasturi\\Projects\\",
-                "456KB"),
+                "343MB"),
 
                 new ProjectDTO("Football Stats Explorer for UCL Players",
                         List.of("Spring Boot", "Java", "PostgreSQL"),
@@ -36,7 +36,7 @@ public class ProjectController {
                         "FootballStats.project",
                         "Project File",
                         "C:\\Users\\SinglaKasturi\\Projects\\",
-                        "512KB"),
+                        "310KB"),
 
                 new ProjectDTO("Secure Auth System with Email Verification",
                         List.of("Spring Boot", "Java", "PostgreSQL", "SupaBase"),
@@ -46,7 +46,7 @@ public class ProjectController {
                         "SecureAuthSystem.project",
                         "Project File",
                         "C:\\Users\\SinglaKasturi\\Projects\\",
-                        "300KB")
+                        "571KB")
                         );
     }
 }
