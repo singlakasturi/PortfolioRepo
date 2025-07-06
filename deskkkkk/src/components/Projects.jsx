@@ -8,7 +8,7 @@ const Projects = (props) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/projects`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/projects`)
       .then((res) => {
         if (!res.ok) throw new Error('Network response was not ok');
         return res.json();

@@ -43,7 +43,7 @@ export default function GoogleClone({ containerHeight = '540px' }) {
       console.log('Search params:', { query, activeTab, type, start }); // Debug log
 
 
-      fetch(`${import.meta.env.VITE_API_URL}/search?q=${encodeURIComponent(query)}&start=${start}&type=${type}`)
+      fetch(`${import.meta.env.VITE_API_URL}/api/search?q=${encodeURIComponent(query)}&start=${start}&type=${type}`)
         .then(res => {
           if (!res.ok) throw new Error('Network response was not ok');
           return res.json();
