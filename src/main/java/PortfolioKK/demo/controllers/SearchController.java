@@ -29,8 +29,11 @@ public class SearchController {
     @GetMapping
     public ResponseEntity<List<SearchDTO>> search(
             @RequestParam("q") String query,
-            @RequestParam(value = "type", defaultValue = "web") String type
+            @RequestParam(value = "type", defaultValue = "web") String typeRaw
     ) {
+        String type = typeRaw.toLowerCase();
+        if (type.equals("images")) type = "image";
+        if (type.equals("videos")) type = "video";
         String encodedQuery = URLEncoder.encode(query, StandardCharsets.UTF_8);
         String apiUrl = "";
 
