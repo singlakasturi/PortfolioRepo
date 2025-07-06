@@ -34,7 +34,7 @@ public class ProjectController {
                                 "Designed a modern, responsive UI for song discovery with details such as artist, album, and match confidence.",
                                 "Engineered a scalable PostgreSQL schema for storing song fingerprints and metadata.",
                                 "Designed features to analyze similar submissions, laying the groundwork for a recommendation system."),
-                        "https://github.com/singlakasturi/Shazam-But-Better",
+                        "https://github.com/singlakasturi/Shazam",
                         "TuneTrace.project",
                         "Project File",
                         "C:\\Users\\SinglaKasturi\\Projects\\",
