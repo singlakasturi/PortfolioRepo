@@ -1,0 +1,28 @@
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Java
+target/
+*.class
+
+# Logs
+*.log
+
+# Environment variables
+.env
+*.env
+application.properties
+*application.properties
+
+# OS files
+.DS_Store
+Thumbs.db
