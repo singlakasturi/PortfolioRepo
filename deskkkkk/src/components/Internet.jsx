@@ -5,7 +5,7 @@ import GoogleClone from './GoogleClone'
 
 const HEADER_HEIGHT = 24;
 
-const Internet = (props) => {
+const Internet = ({ onClose, zIndex, onFocus, isMinimized, isMaximized, onMinimize, onMaximize }) => {
     const contentRef = useRef(null);
     const [contentHeight, setContentHeight] = useState(700 - HEADER_HEIGHT);
 
@@ -22,47 +22,54 @@ const Internet = (props) => {
     }, []);
 
     return (
-        <div>
-            <Rnd
-                default={{
-                    x: 100,
-                    y: 50,
-                    width: 800,
-                    height: 700,
-                }}
-                minWidth={600}
-                minHeight={500}
-                bounds="window"
-                dragHandleClassName="app-header"
-                className="z-50"
-                onResize={handleResize}
-                onResizeStop={handleResize}
-            >
-                <div ref={contentRef} className='w-full h-full flex flex-col rounded-md overflow-hidden border-1 border-black/30'>
-                    <div className='app-header bg-black/30 backdrop-blur-md h-[24px] flex flex-row justify-between items-center px-2'>
-                        <p className='text-white'>
-                            Internet Explorer
-                        </p>
-                        <div className='flex'>
-                            <button className='text-white w-8 h-[24px] border border-black/30'>-</button>
-                            <button className='text-white w-8 h-[24px] border border-black/30'>□</button>
-                            <button
-                                className='bg-red-500 text-white w-8 h-[24px] hover:shadow-[0_0_10px_2px_rgba(239,68,68,0.7)] transition duration-300'
-                                onClick={() => {
-                                    const newArray = props.openApp.filter(appId => appId !== 2);
-                                    props.setOpenApp(newArray);
-                                }}
-                            >
-                                x
-                            </button>
-                        </div>
+        <Rnd
+            default={{
+                x: 100,
+                y: 50,
+                width: 800,
+                height: 700,
+            }}
+            size={isMaximized ? { width: '100%', height: 'calc(100vh - 30px)' } : undefined}
+            position={isMaximized ? { x: 0, y: 0 } : undefined}
+            disableDragging={isMaximized}
+            enableResizing={!isMaximized}
+            minWidth={600}
+            minHeight={500}
+            bounds="window"
+            dragHandleClassName="xp-titlebar"
+            onResize={handleResize}
+            onResizeStop={handleResize}
+            style={{ zIndex, display: isMinimized ? 'none' : 'block' }}
+        >
+            <div ref={contentRef} className="xp-window w-full h-full flex flex-col select-none" onMouseDown={onFocus}>
+                <div className="xp-titlebar">
+                    <div className="flex items-center">
+                        <span className="font-bold text-white pl-1">Internet Explorer</span>
                     </div>
-                    <div className='bg-white flex-1 overflow-hidden h-full'>
-                        <GoogleClone containerHeight={contentHeight + 'px'} />
+                    <div className="flex gap-0.5">
+                        <button className="xp-btn-min" onClick={(e) => { e.stopPropagation(); onMinimize(); }}>
+                            <svg className="w-2 h-2 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round">
+                                <line x1="3" y1="18" x2="21" y2="18" />
+                            </svg>
+                        </button>
+                        <button className="xp-btn-max" onClick={(e) => { e.stopPropagation(); onMaximize(); }}>
+                            <svg className="w-2 h-2 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                <rect x="3" y="5" width="18" height="14" />
+                            </svg>
+                        </button>
+                        <button className="xp-btn-close" onClick={onClose}>
+                            <svg className="w-2.5 h-2.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round">
+                                <line x1="5" y1="5" x2="19" y2="19" />
+                                <line x1="19" y1="5" x2="5" y2="19" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
-            </Rnd>
-        </div>
+                <div className="bg-white flex-1 overflow-hidden h-full">
+                    <GoogleClone containerHeight={contentHeight + 'px'} />
+                </div>
+            </div>
+        </Rnd>
     )
 }
 

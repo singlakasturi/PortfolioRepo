@@ -15,17 +15,32 @@ public class ProjectController {
     @GetMapping
     public List<ProjectDTO> getAllProjects() {
         return List.of(
+
                 new ProjectDTO("Resemblance – Code Similarity Detection System",
-                List.of("Spring Boot", "React.js", "Python", "Java", "Flask", "Rest API's"),
-                List.of("Developed a full-stack tool for detecting plagiarism in coding contests with semantic and structural analysis.",
-                        "Implemented a dual-pane UI to compare code with % similarity and user highlighting.",
-                        "Integrated custom Python model to detect logical similarity despite variable changes or language switches.",
-                        "Used API scraping for contest & submission data; added email support through the ’Contact Us’ feature."),
-                "https://github.com/singlakasturi/Pro",
-                "Resemblance.project",
-                "Project File",
-                "C:\\Users\\SinglaKasturi\\Projects\\",
-                "343MB"),
+                        List.of("Spring Boot", "React", "Python", "JPlag", "Playwright", "PostgreSQL", "Docker"),
+                        List.of("Built an automated LeetCode contest scraper using Python + Playwright to collect rankings and submissions via REST/GraphQL APIs with Cloudflare bypass, proxy support, rotating user-agents, and retry logic.",
+                                "Integrated JPlag into a Spring Boot backend for cross-language plagiarism detection by normalizing code and grouping similar submissions using Union-Find with configurable similarity thresholds.",
+                                " Designed a multi-threaded pipeline using ThreadPoolExecutor for concurrent scraping, database persistence, and asynchronous plagiarism analysis across entire contest ranges.",
+                                "Developed a React + Vite dashboard with code comparison, leaderboard, and admin controls.",
+                                "Dockerized the full stack and secured APIs with Bucket4j rate limiting and token-based authentication."),
+                        "https://github.com/singlakasturi/Pro",
+                        "Resemblance.project",
+                        "Project File",
+                        "C:\\Users\\SinglaKasturi\\Projects\\",
+                        "343MB"),
+
+
+                new ProjectDTO("SeatWise – Exam Seating Plan Portal",
+                        List.of("Spring Boot", "Java", "SQL", "Node.js", "React.js"),
+                        List.of("Developed and deployed a full-stack exam seating automation platform currently used by my college for real examination workflows.",
+                                "Architected the system using two independent backend services (core allocation service and export/utility service) to improve scalability, fault isolation, and future extensibility.",
+                                "Implemented subject-wise and date-wise seat allocation algorithm to prevent clashes and ensure fair room utilization.",
+                                "Delivered production-ready seating plan outputs adopted by college administration, replacing manual planning and reducing errors."),
+                        "https://github.com/singlakasturi/SeatingPlanGenerator",
+                        "SeatWise.project",
+                        "Project File",
+                        "C:\\Users\\SinglaKasturi\\Projects\\",
+                        "4.8MB"),
 
                 new ProjectDTO("TuneTrace – Real-Time Music Recognition App",
                         List.of("Spring Boot", "React.js", "PostgreSQL", "Java", "Rest API's", "TarsosDSP"),

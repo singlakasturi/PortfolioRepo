@@ -20,4 +20,9 @@ public class ResumeController {
     public RedirectView redirectToResume() {
         return new RedirectView(resumeLink);
     }
+
+    @GetMapping("/url")
+    public java.util.Map<String, String> getResumeUrl() {
+        return java.util.Collections.singletonMap("url", resumeLink);
+    }
 }

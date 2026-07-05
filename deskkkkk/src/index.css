@@ -1,2 +1,600 @@
-
 @import 'tailwindcss';
+
+@font-face {
+  font-family: 'Tahoma';
+  src: local('Tahoma'), local('Tahoma-Bold');
+}
+
+/* Base Settings */
+* {
+  font-family: 'Tahoma', 'Verdana', 'Microsoft Sans Serif', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  user-select: none;
+  background-color: #000;
+}
+
+/* Custom Scrollbar styled like Windows XP */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1efe2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath d='M0 0h2v2H0zm2 2h2v2H2z' fill='%23ffffff' fill-opacity='.6'/%3E%3C/svg%3E");
+  border: 1px solid #d4d0c8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ece9d8;
+  border-top: 1.5px solid #fff;
+  border-left: 1.5px solid #fff;
+  border-right: 1.5px solid #808080;
+  border-bottom: 1.5px solid #808080;
+  box-shadow: inset 1px 1px 0px #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e1dfcc;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #ece9d8;
+  border-top: 1.5px solid #808080;
+  border-left: 1.5px solid #808080;
+  border-right: 1.5px solid #fff;
+  border-bottom: 1.5px solid #fff;
+  box-shadow: inset -1px -1px 0px #fff;
+}
+
+/* Windows XP Classic Window Framing */
+.xp-window {
+  background-color: #ece9d8;
+  border: 3px solid #0054e3;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+}
+
+.xp-titlebar {
+  background: linear-gradient(to right, #0058e6 0%, #3a93ff 8%, #0056e2 25%, #004cb5 70%, #003fa3 90%, #0054e3 100%);
+  height: 30px;
+  padding: 0 6px 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  text-shadow: 1px 1px 2px #000000;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: move;
+  border-bottom: 1px solid #0036a1;
+}
+
+.xp-titlebar.inactive {
+  background: linear-gradient(to right, #7698c1 0%, #b2cbfa 8%, #7698c1 25%, #597ea8 70%, #46678e 90%, #7698c1 100%);
+  border-bottom: 1px solid #46678e;
+}
+
+.xp-window-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  image-rendering: pixelated;
+}
+
+/* Control Buttons */
+.xp-btn-close {
+  width: 21px;
+  height: 21px;
+  background: radial-gradient(circle, #ff6666 0%, #cc0000 70%, #990000 100%);
+  border: 1px solid #7a0000;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  box-shadow: inset 1px 1px 1px rgba(255,255,255,0.4);
+  cursor: pointer;
+}
+.xp-btn-close:hover {
+  background: radial-gradient(circle, #ff9999 0%, #ff3333 70%, #cc0000 100%);
+}
+.xp-btn-close:active {
+  background: radial-gradient(circle, #cc0000 0%, #990000 70%, #660000 100%);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+.xp-btn-max, .xp-btn-min {
+  width: 21px;
+  height: 21px;
+  background: radial-gradient(circle, #ffffff 0%, #3a93ff 60%, #0054e3 100%);
+  border: 1px solid #002e8a;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 1px 1px 1px rgba(255,255,255,0.5);
+  cursor: pointer;
+}
+.xp-btn-max:hover, .xp-btn-min:hover {
+  background: radial-gradient(circle, #ffffff 0%, #5ca6ff 60%, #1e6bf2 100%);
+}
+.xp-btn-max:active, .xp-btn-min:active {
+  background: radial-gradient(circle, #1e6bf2 0%, #0036a1 80%, #002266 100%);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+/* Standard Button */
+.xp-button {
+  background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 15%, #e1ddc4 85%, #d1cbb0 100%);
+  border-top: 1.5px solid #ffffff;
+  border-left: 1.5px solid #ffffff;
+  border-right: 1.5px solid #808080;
+  border-bottom: 1.5px solid #808080;
+  box-shadow: inset 1px 1px 0px #ffffff;
+  padding: 4px 12px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+  color: #000;
+  cursor: pointer;
+  outline: none;
+}
+.xp-button:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #f6f5ec 15%, #e9e6d3 85%, #dfdaca 100%);
+  border-right-color: #555;
+  border-bottom-color: #555;
+}
+.xp-button:active {
+  background: linear-gradient(to bottom, #d1cbb0 0%, #e1ddc4 15%, #ece9d8 85%, #ffffff 100%);
+  border-top-color: #808080;
+  border-left-color: #808080;
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+  box-shadow: inset 1px 1px 1px rgba(0,0,0,0.2);
+}
+.xp-button:focus {
+  border: 1px dotted #000;
+  outline: 1px solid #3a93ff;
+}
+
+/* File explorer styled inner view */
+.xp-menu-bar {
+  display: flex;
+  background-color: #ece9d8;
+  border-bottom: 1px solid #d4d0c8;
+  padding: 2px 6px;
+  gap: 8px;
+}
+.xp-menu-item {
+  padding: 2px 6px;
+  cursor: pointer;
+}
+.xp-menu-item:hover {
+  background-color: #316ac5;
+  color: white;
+}
+
+/* XP Explorer Pane & Sidebar */
+.xp-explorer-pane {
+  background-color: #7a96df;
+  background: linear-gradient(180deg, #748edc 0%, #4c68af 100%);
+  width: 200px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.xp-explorer-card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+  margin-bottom: 10px;
+}
+
+.xp-explorer-card-header {
+  background: linear-gradient(to right, #748edc 0%, #3860bb 100%);
+  color: white;
+  padding: 5px 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.xp-explorer-card-content {
+  background-color: #d6def5;
+  padding: 8px;
+  font-size: 11px;
+}
+
+.xp-explorer-card-content a {
+  color: #1b3d88;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.xp-explorer-card-content a:hover {
+  color: #cd7700;
+}
+
+/* XP Text Area / Notepad */
+.notepad-textarea {
+  background-color: #ffffff;
+  border: 2px solid #7f9db9;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  padding: 6px;
+  outline: none;
+  resize: none;
+}
+
+/* Classic Tooltip */
+.xp-tooltip {
+  background-color: #ffffe1;
+  border: 1px solid #000000;
+  padding: 2px 5px;
+  font-size: 11px;
+  color: #000000;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+
+/* Taskbar container and details */
+.xp-taskbar {
+  background: linear-gradient(to bottom, #245dd7 0%, #0f40b2 9%, #1952d4 18%, #1e5de6 55%, #1c5ae3 75%, #184bc8 100%);
+  border-top: 1px solid #002b80;
+  box-shadow: inset 0 1px 0 #3a75f0;
+  height: 30px;
+}
+
+/* Start Button */
+.xp-start-button {
+  background: linear-gradient(to bottom, #00ad00 0%, #007700 100%);
+  box-shadow: inset 1px 1px 1px #8aff8a, 0 1px 2px rgba(0,0,0,0.5);
+  border-right: 1px solid #005500;
+  border-radius: 0 10px 10px 0;
+  text-shadow: 1px 1px 2px #003300;
+  font-family: 'Trebuchet MS', Tahoma, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: white;
+  transition: filter 0.1s;
+}
+
+.xp-start-button:hover {
+  filter: brightness(1.1);
+  box-shadow: inset 1px 1px 1px #a4ffa4, 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.xp-start-button:active {
+  background: linear-gradient(to bottom, #005500 0%, #008800 100%);
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+/* Taskbar Program Tabs */
+.xp-task-button {
+  background: linear-gradient(to bottom, #3c81f7 0%, #245ad4 50%, #1c52cf 55%, #1f57d6 100%);
+  border: 1px solid #1d429a;
+  border-top-color: #386cd6;
+  border-left-color: #386cd6;
+  border-radius: 2px;
+  color: white;
+  font-size: 11px;
+  height: 22px;
+  min-width: 100px;
+  max-width: 140px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.xp-task-button:hover {
+  background: linear-gradient(to bottom, #5ba6ff 0%, #3074ff 50%, #2264fa 55%, #2a6bfb 100%);
+}
+
+.xp-task-button.active {
+  background: linear-gradient(to bottom, #16388c 0%, #1b42a4 50%, #1a3e9c 55%, #18388c 100%) !important;
+  border-color: #0c1a42 !important;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.6) !important;
+  border-top-color: #070f26 !important;
+  border-left-color: #070f26 !important;
+}
+
+/* System Tray Panel */
+.xp-system-tray {
+  background: linear-gradient(to bottom, #0c8aee 0%, #005ae6 100%);
+  border-left: 1px solid #105cb6;
+  box-shadow: inset 1px 0px 0px #3198ff, inset 0 1px 0 #3198ff;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  height: 100%;
+}
+
+/* Clippy style */
+.clippy-bubble {
+  background-color: #ffffe1;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+  font-size: 12px;
+  line-height: 1.3;
+  color: black;
+  position: relative;
+}
+.clippy-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: #ffffe1 transparent;
+  display: block;
+  width: 0;
+}
+.clippy-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -11px;
+  right: 19px;
+  border-width: 11px 11px 0;
+  border-style: solid;
+  border-color: #000000 transparent;
+  display: block;
+  width: 0;
+  z-index: -1;
+}
+
+/* Selection Highlight */
+.xp-selected-icon {
+  background-color: rgba(49, 106, 197, 0.4) !important;
+  border: 1.5px dotted #ece9d8 !important;
+  border-radius: 2px;
+}
+.xp-selected-label {
+  background-color: #0a246a !important;
+  color: white !important;
+}
+
+/* Desktop Icon Shadow Style */
+.xp-icon-shadow {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9), 1px 2px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* BSOD Style */
+.bsod-screen {
+  background-color: #0000aa;
+  color: #ffffff;
+  font-family: 'Lucida Console', Monaco, monospace;
+  font-size: 14px;
+  padding: 30px;
+  line-height: 1.6;
+}
+
+/* Boot screen loader animation */
+.boot-loader-bar {
+  width: 150px;
+  height: 12px;
+  border: 1px solid #999;
+  background-color: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.boot-loader-progress {
+  width: 35px;
+  height: 100%;
+  background: linear-gradient(to right, #0050e0 0%, #3080ff 50%, #0050e0 100%);
+  position: absolute;
+  animation: bootSlide 2s linear infinite;
+}
+
+@keyframes bootSlide {
+  0% { left: -35px; }
+  100% { left: 150px; }
+}
+
+/* Vista Styled Start Menu - Classical Layout */
+.vista-start-menu-classic {
+  display: flex;
+  flex-direction: row;
+  background-color: #102a4e;
+  border: 1.5px solid #2b5d9c;
+  border-top-color: #558cd4;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  z-index: 250;
+  font-family: 'Segoe UI', 'Tahoma', sans-serif;
+  overflow: hidden;
+  padding: 1px;
+}
+
+.vista-left-classic {
+  width: 240px;
+  background-color: #ffffff;
+  border-radius: 4px 0 0 4px;
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vista-right-classic {
+  width: 170px;
+  background: linear-gradient(to bottom, #4f9ec4 0%, #7dbcdb 100%);
+  border-left: 1px solid #7cb7d6;
+  border-radius: 0 4px 4px 0;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #1e395b;
+}
+
+.vista-classic-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #000000;
+  font-size: 12px;
+}
+
+.vista-classic-item-left img {
+  width: 24px;
+  height: 24px;
+  image-rendering: pixelated;
+}
+
+.vista-classic-item-left:hover {
+  background: linear-gradient(to bottom, #f2f7fc 0%, #dbe9f9 100%);
+  border-color: #7eaed7;
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+.vista-classic-item-right {
+  padding: 6px 8px;
+  color: #0d325c;
+  font-weight: 500;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.vista-classic-item-right:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.vista-classic-divider-left {
+  border-bottom: 1.5px dotted #e5e5e5;
+  margin: 4px 6px;
+}
+
+.vista-classic-right-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Shutdown Container and Split Buttons */
+.vista-shutdown-container {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  border: 1px solid #7c9cbc;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #ffffff 0%, #e1e6ed 30%, #c1cbd7 100%);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  overflow: hidden;
+  margin-top: auto;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+.vista-shutdown-btn {
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #1e395b;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.vista-shutdown-btn:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #dbe2eb 100%);
+}
+
+.vista-shutdown-btn:active {
+  background: linear-gradient(to bottom, #aab7c5 0%, #c9d5e3 100%);
+}
+
+.vista-shutdown-arrow {
+  padding: 4px 6px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #1e395b;
+  border: none;
+  border-left: 1px solid #7c9cbc;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.vista-shutdown-arrow:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #dbe2eb 100%);
+}
+
+.vista-shutdown-arrow:active {
+  background: linear-gradient(to bottom, #aab7c5 0%, #c9d5e3 100%);
+}
+
+/* Circular Vista Start Button */
+.vista-start-button-classic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2d76ce 0%, #163e7c 70%, #0c2044 100%);
+  border: 1.5px solid #5ca6ff;
+  box-shadow: 0 1.5px 3px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: translateY(-3px);
+  margin-left: 6px;
+  transition: filter 0.1s, transform 0.1s;
+}
+
+.vista-start-button-classic:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 2px 5px rgba(92,166,255,0.7), inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+.vista-start-button-classic:active {
+  transform: translateY(-2px);
+  filter: brightness(0.9);
+}

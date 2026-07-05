@@ -1,33 +1,55 @@
 # AI Tools
 .ai/
 
-# IntelliJ
+# IDEs and Editors (IntelliJ, VS Code, Eclipse/STS, NetBeans)
 .idea/
 *.iml
-
-# VS Code
+*.iws
+*.ipr
 .vscode/
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Node
+# Node / JS
 node_modules/
 dist/
+dist-ssr/
 build/
 
-# Java
+# Java / Maven
 target/
 *.class
-
-# Maven
 .mvn/wrapper/maven-wrapper.jar
 
 # Logs
 *.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Environment variables
+# Environment and configuration
 .env
 .env.*
 *.env
 .env*
+*.local
 application.properties
 *application.properties
 application*.properties
